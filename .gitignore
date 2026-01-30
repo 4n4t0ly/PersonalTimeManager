@@ -1,0 +1,51 @@
+
+# Visual Studio
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+
+[Bb]in/
+[Oo]bj/
+
+# .NET
+
+*.dll
+*.exe
+*.pdb
+*.cache
+*.deps.json
+*.runtimeconfig.json
+
+# Test results
+
+TestResults/
+*.trx
+
+# Logs
+
+*.log
+
+# OS generated files
+
+.DS_Store
+Thumbs.db
+
+# Rider / VS Code
+
+.idea/
+.vscode/
+
+# NuGet
+
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Publish
+
+publish/
