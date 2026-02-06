@@ -7,10 +7,6 @@
       "RelativeMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|solutionrelative:src\\timemanager.core\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.core\\taskcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|solutionrelative:src\\timemanager.core\\taskcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.app\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|solutionrelative:src\\timemanager.app\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,24 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TaskCategory.cs",
-              "DocumentMoniker": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TaskCategory.cs",
-              "RelativeDocumentMoniker": "src\\TimeManager.Core\\TaskCategory.cs",
-              "ToolTip": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TaskCategory.cs",
-              "RelativeToolTip": "src\\TimeManager.Core\\TaskCategory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T11:33:25.614Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -49,14 +32,14 @@
               "RelativeDocumentMoniker": "src\\TimeManager.Core\\TaskItem.cs",
               "ToolTip": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TaskItem.cs",
               "RelativeToolTip": "src\\TimeManager.Core\\TaskItem.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB8AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwCAAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-02T20:07:11.205Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.App\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "src\\TimeManager.App\\AssemblyInfo.cs",
