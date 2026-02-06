@@ -8,33 +8,31 @@ namespace TimeManager.Core
 {
     public class TaskItem
     {
-        private string _name;
-        private string? _description;
-        private TaskCategory? _category;
+        public string Name { get; private set; }
+        public string? Description { get; private set; }
+        public string? Category { get; private set; }
         //Have to add special structer, where 0 is None Category,
         //user will have acces to add new categories
-        private DateTime? _deadLine;
-        private TimeSpan _timeToDo;
-        private byte _priority; //1 - 10
-        private byte _dificulty; //1 - 100
+        public DateTime? DeadLine { get; private set; }
+        public TimeSpan? TimeToDo { get; private set; }
 
-        private bool _isItDone;
+        public byte Priority { get; private set; } //1 - 10
+        public byte Dificulty { get; private set; } //1 - 100
+
+        public bool _isDone { get; private set; }
         public TaskItem(
-            string Name, string Description,  Category,
+            string name, string Description, string Category,
             DateTime DeadLine, TimeSpan TimeToDo,
             byte priority = 5, byte dificulty = 20)
         {
-            _name = Name;
-            _description = Description;
-            _category = Category;
-            _priority = priority;
-            _isItDone = IsItDone;
-            _deadLine = DeadLine;
-            _timeToDo = TimeToDo;
+            Name = name;
+            Description = Description;
+            Category = Category;
+            Priority = priority;
         }
         public void MarkDone()
         {
-            _isItDone = true;
+            _isDone = true;
         }
     }
 }
