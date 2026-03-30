@@ -24,18 +24,27 @@ namespace TimeManager.Core
             string name, string description, string category,
             byte priority = 5, byte dificulty = 20)
         {
+            if (priority < 1 || priority > 10)
+                throw new ArgumentOutOfRangeException(nameof(priority));
+            if (dificulty < 1 || dificulty > 100)
+                throw new ArgumentOutOfRangeException(nameof(dificulty));
             Name = name;
             Description = description;
             Category = category;
             Priority = priority;
+            Dificulty = dificulty;
         }
         public void MarkDone()
         {
             IsDone = true;
         }
-        public void SetPriority(byte priority)
+        public void SetDeadLine(DateTime deadLine)
         {
-
+            DeadLine = deadLine;
+        }
+        public void SetTimeToDo(TimeSpan timeToDo)
+        {
+            TimeToDo = timeToDo;
         }
     }
 }
