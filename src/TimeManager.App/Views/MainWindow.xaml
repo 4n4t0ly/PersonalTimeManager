@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:TimeManager.App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="DarkGray">
+        <Canvas  Background ="GhostWhite" HorizontalAlignment="Left"
+                Height="420" Margin="5" VerticalAlignment="Center" Width="220">
+            <Button Content="Calendar" Height="34" Canvas.Top="380" Canvas.Left="5" Width="209" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        </Canvas>
+        <Canvas Background ="AliceBlue" HorizontalAlignment="Center" Height="420" VerticalAlignment="Center" Width="335">
+            <Button Content="Skip" Height="35" Canvas.Left="5" Canvas.Top="380" Width="163" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Content="Shuffle tasks" Height="35" Canvas.Left="168" Canvas.Top="380" Width="162" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Content="Start" Height="38" Canvas.Left="5" Canvas.Top="340" Width="325"/>
+        </Canvas>
+        <Canvas Background ="GhostWhite" HorizontalAlignment="Right" Height="420" Margin="5" VerticalAlignment="Center" Width="220">
+            <Button Content="+Add" Height="35" Canvas.Left="10" Canvas.Top="380" Width="200"/>
+        </Canvas>
 
     </Grid>
 </Window>
