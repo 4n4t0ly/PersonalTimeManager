@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeManager.Core;
+using TimeManager.App.ViewModels;
 
 namespace TimeManager.App;
 
@@ -19,5 +21,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        var task = new TaskItem("Test", "First task", "testing");
+        DataContext = new TaskViewModel(task);
     }
 }

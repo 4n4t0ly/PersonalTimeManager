@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0-windows7.0": {}
+    "net9.0-windows7.0": {
+      "TimeManager.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/TimeManager.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TimeManager.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "TimeManager.Core/1.0.0": {
+      "type": "project",
+      "path": "../TimeManager.Core/TimeManager.Core.csproj",
+      "msbuildProject": "../TimeManager.Core/TimeManager.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0-windows7.0": []
+    "net9.0-windows7.0": [
+      "TimeManager.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\anato\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net9.0-windows7.0": {
           "targetAlias": "net9.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TimeManager.Core.csproj": {
+              "projectPath": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TimeManager.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
