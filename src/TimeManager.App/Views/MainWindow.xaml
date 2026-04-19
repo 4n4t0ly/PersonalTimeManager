@@ -10,14 +10,20 @@
         <Canvas  Background ="GhostWhite" HorizontalAlignment="Left"
                 Height="420" Margin="5" VerticalAlignment="Center" Width="220">
             <Button Content="Calendar" Height="34" Canvas.Top="380" Canvas.Left="5" Width="209" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <TextBox Name="DaysBox" Height="365" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="10" Width="200"/>
         </Canvas>
         <Canvas Background ="AliceBlue" HorizontalAlignment="Center" Height="420" VerticalAlignment="Center" Width="335">
-            <Button Content="Skip" Height="35" Canvas.Left="5" Canvas.Top="380" Width="163" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Name="SkipButton" Content="Skip" Height="35" Canvas.Left="5" Canvas.Top="380" Width="163" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Button Content="Shuffle tasks" Height="35" Canvas.Left="168" Canvas.Top="380" Width="162" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Content="Start" Height="38" Canvas.Left="5" Canvas.Top="340" Width="325"/>
+            <Button Name="StartButton" Content="Start" Height="38" Canvas.Left="5" Canvas.Top="340" Width="325"/>
+            <Label Name="Timer" Content="00:00:00" FontSize="64px" Height="86" Canvas.Left="44" Canvas.Top="10" Width="246" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Name="CurrentTime" Content="Label" FontSize="22" Height="39" Canvas.Left="139" Canvas.Top="101" Width="170" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox Name="DescriptionBox" Height="195" Canvas.Left="21" TextWrapping="Wrap" Text="" Canvas.Top="140" Width="288"/>
         </Canvas>
         <Canvas Background ="GhostWhite" HorizontalAlignment="Right" Height="420" Margin="5" VerticalAlignment="Center" Width="220">
-            <Button Content="+Add" Height="35" Canvas.Left="10" Canvas.Top="380" Width="200"/>
+            <Button Name="AddButton" Content="+Add" Height="35" Canvas.Left="10" Canvas.Top="380" Width="200"/>
+            <Label Content="Name    Priority    Type    Difficulty" Height="27" Canvas.Left="10" Canvas.Top="10" Width="200" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox Name="ScрeduleBox" Height="333" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="42" Width="200"/>
         </Canvas>
 
     </Grid>
