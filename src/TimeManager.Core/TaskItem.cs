@@ -9,8 +9,8 @@ namespace TimeManager.Core
     public class TaskItem
     {
         public string Name { get; private set; }
-        public string? Description { get; private set; }
         public string? Category { get; private set; }
+        public string? Description { get; private set; }
         //Have to add special structer, where 0 is None Category,
         //user will have acces to add new categories
         public DateTime? DeadLine { get; private set; }
@@ -21,7 +21,7 @@ namespace TimeManager.Core
 
         public bool IsDone { get; private set; }
         public TaskItem(
-            string name, string description, string category,
+            string name,  string category, string description,
             byte priority = 5, byte dificulty = 20)
         {
             if (priority < 1 || priority > 10)
@@ -37,6 +37,10 @@ namespace TimeManager.Core
         public void MarkDone()
         {
             IsDone = true;
+        }
+        public void MarkUndone()
+        {
+            IsDone = false;
         }
         public void SetDeadLine(DateTime deadLine)
         {

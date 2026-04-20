@@ -21,7 +21,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var task = new TaskItem("Test", "First task", "testing");
-        DataContext = new TaskViewModel(task);
+        DataContext = new MainViewModel();
     }
 }

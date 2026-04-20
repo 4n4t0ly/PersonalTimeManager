@@ -9,4 +9,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TimeManager.Core\TimeManager.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -12,7 +12,6 @@ namespace TimeManager.App.ViewModels
             _task = task;
         }
         public string Name => _task.Name;
-        public string Description => _task.Description;
         public bool IsDone => _task.IsDone;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
