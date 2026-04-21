@@ -13,10 +13,10 @@
             <ColumnDefinition Width="220"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Background="GhostWhite" Margin="5">
-                <ListBox Name="DaysBox" Height="375"
+            <ListBox Name="DaysBox" Height="375"
                          Width="200" Margin="5"/>
-                <Button Content="Calendar" Height="35" Width="209"/>
-            </StackPanel>
+            <Button Content="Calendar" Height="35" Width="209"/>
+        </StackPanel>
             <StackPanel Grid.Column="1" Background="AliceBlue" Margin="5">
                 <Label Name="Timer" Content="00:00:00"
                        FontSize="64"
