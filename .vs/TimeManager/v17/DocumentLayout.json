@@ -11,20 +11,20 @@
       "RelativeMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|solutionrelative:src\\timemanager.app\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.core\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|solutionrelative:src\\timemanager.core\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.app\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|solutionrelative:src\\timemanager.app\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.core\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|solutionrelative:src\\timemanager.core\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.app\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|solutionrelative:src\\timemanager.app\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.core\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|solutionrelative:src\\timemanager.core\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.app\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0F9F19D-770C-4024-96F5-33F64A558FEC}|src\\TimeManager.App\\TimeManager.App.csproj|solutionrelative:src\\timemanager.app\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|c:\\university\\kursu_darbs\\2kurss\\timemanager\\src\\timemanager.core\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD78410A-95D1-4877-B971-2C2A1DD9AC1A}|src\\TimeManager.Core\\TimeManager.Core.csproj|solutionrelative:src\\timemanager.core\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -67,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "TaskManager.cs",
               "DocumentMoniker": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TaskManager.cs",
               "RelativeDocumentMoniker": "src\\TimeManager.Core\\TaskManager.cs",
@@ -80,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.App\\Views\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "src\\TimeManager.App\\Views\\MainWindow.xaml.cs",
@@ -93,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "TaskViewModel.cs",
               "DocumentMoniker": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.App\\ViewModels\\TaskViewModel.cs",
               "RelativeDocumentMoniker": "src\\TimeManager.App\\ViewModels\\TaskViewModel.cs",
@@ -106,13 +106,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "TaskItem.cs",
               "DocumentMoniker": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TaskItem.cs",
               "RelativeDocumentMoniker": "src\\TimeManager.Core\\TaskItem.cs",
               "ToolTip": "C:\\University\\Kursu_Darbs\\2kurss\\TimeManager\\src\\TimeManager.Core\\TaskItem.cs",
               "RelativeToolTip": "src\\TimeManager.Core\\TaskItem.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-02T20:07:11.205Z",
               "EditorCaption": ""

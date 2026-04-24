@@ -9,10 +9,10 @@ namespace TimeManager.App.ViewModels
         public ObservableCollection<TaskItem> Tasks { get; }
         public MainViewModel()
         {
-            Task = new ObservableCollection<TaskItem>();
+            Tasks = new ObservableCollection<TaskItem>();
             var task = new TaskItem("Work of the year", "Education", "");
             _manager.AddTask(task);
-            Task.Add(task);
+            Tasks.Add(task);
         }
     }
 }
