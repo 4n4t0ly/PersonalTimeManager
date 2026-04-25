@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml" />
     <ProjectReference Include="..\TimeManager.Core\TimeManager.Core.csproj" />
   </ItemGroup>
 
