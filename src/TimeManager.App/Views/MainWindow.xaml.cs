@@ -23,4 +23,29 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = new MainViewModel();
     }
+
+    private void StartButton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void SkipButton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void ShuffleButton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void AddButton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
 }

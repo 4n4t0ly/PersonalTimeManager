@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager.App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="470" Width="800">
     <Grid Background="DarkGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
@@ -15,7 +15,7 @@
         <StackPanel Grid.Column="0" Background="GhostWhite" Margin="5">
             <ListBox Name="DaysBox" Height="375"
                          Width="200" Margin="5"/>
-            <Button Content="Calendar" Height="35" Width="209"/>
+            <Button Name="CalendarButton" Content="Calendar" Height="35" Width="209" Click="Button_Click"/>
         </StackPanel>
             <StackPanel Grid.Column="1" Background="AliceBlue" Margin="5">
                 <Label Name="Timer" Content="00:00:00"
@@ -27,7 +27,7 @@
                 <TextBox Name="DescriptionBox"
                          Height="206"
                          TextWrapping="Wrap" Margin="5"/>
-            <Button Name="StartButton" Content="Start" Height="35"/>
+            <Button Name="StartButton" Content="Start" Height="35" Click="StartButton_Click"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -36,11 +36,11 @@
                 <Button Name="SkipButton"
                     Content="Skip"
                     Grid.Column="0"
-                    Height="35"/>
+                    Height="35" Click="SkipButton_Click"/>
                 <Button Name="ShuffleButton"
                     Content="Shuffle tasks"
                     Grid.Column="1"
-                    Height="35"/>
+                    Height="35" Click="ShuffleButton_Click"/>
             </Grid>
             </StackPanel>
 
@@ -48,8 +48,9 @@
                 <Label Content="Name    Priority    Type    Difficulty"
                        Height="27"/>
                 <ListBox Name="SceduleBox" Height="348"
-                         Width="200" Margin="5"/>
-                <Button Name="AddButton" Content="+Add" Height="35"/>
+                         Width="200" Margin="5"
+                         />
+                <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"/>
             </StackPanel>
 
     </Grid>
