@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeManager.Core;
 using TimeManager.App.ViewModels;
+using System.Windows.Threading;
 
 namespace TimeManager.App;
 
@@ -22,8 +23,15 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = new MainViewModel();
+        DispatcherTimer LiveTime = new DispatcherTimer();
+        LiveTime.Interval = TimeSpan.FromSeconds(1);
+        LiveTime.Tick += timer_Tick;
+        LiveTime.Start();
     }
-
+    void timer_Tick(object sender, EventArgs e)
+    {
+        CurrentTime.Content = DateTime.Now.ToString("HH:mm");
+    }
     private void StartButton_Click(object sender, RoutedEventArgs e)
     {
 

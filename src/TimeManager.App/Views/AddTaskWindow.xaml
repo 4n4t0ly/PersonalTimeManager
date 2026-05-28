@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeManager.App.Views"
         mc:Ignorable="d"
+        PreviewKeyDown="Window_KeyDown"
         Title="AddTaskWindow" Height="300" Width="500">
     <Grid Background="LightGray" Margin="10">
         <Grid.RowDefinitions>

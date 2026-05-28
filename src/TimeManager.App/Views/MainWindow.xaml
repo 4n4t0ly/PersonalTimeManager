@@ -21,7 +21,7 @@
                 <Label Name="Timer" Content="00:00:00"
                        FontSize="64"
                        HorizontalAlignment="Center"/>
-                <Label Name="CurrentTime" Content="00:00"
+                <Label Name="CurrentTime" Content="%TIME%"
                        FontSize="22"
                        HorizontalAlignment="Right"/>
                 <TextBox Name="DescriptionBox"

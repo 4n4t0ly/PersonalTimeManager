@@ -11,8 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
 
 namespace TimeManager.App.Views
 {
@@ -38,10 +36,18 @@ namespace TimeManager.App.Views
                 return;
             }
         }
-
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                DialogResult = true;
+                Close();
+            }
+        }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = true;
+            Close();
         }
     }
 }

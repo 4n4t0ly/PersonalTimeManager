@@ -6,13 +6,17 @@ namespace TimeManager.App.ViewModels
     public class MainViewModel
     {
         private readonly TaskManager _manager = new();
-        public ObservableCollection<TaskItem> Tasks { get;}
+        public ObservableCollection<TaskViewModel> Tasks { get;}
         public MainViewModel()
         {
-            Tasks = new ObservableCollection<TaskItem>();
+            Tasks = new ObservableCollection<TaskViewModel>();
             var task = new TaskItem("Work of the year", "Education", "");
+            AddTask(task);
+        }
+        public void AddTask(TaskItem task)
+        {
             _manager.AddTask(task);
-            Tasks.Add(task);
+            Tasks.Add(new TaskViewModel(task));
         }
     }
 }

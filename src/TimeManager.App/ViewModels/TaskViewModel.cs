@@ -12,6 +12,12 @@ namespace TimeManager.App.ViewModels
             _task = task;
         }
         public string Name => _task.Name;
+        public string? Category => _task.Category;
+        public string? Description => _task.Description;
+        public byte Priority => _task.Priority;
+        public byte Dificulty => _task.Dificulty;
+        public DateTime? DeadLine => _task.DeadLine;
+        public TimeSpan? TimeToDo => _task.TimeToDo;
         public bool IsDone => _task.IsDone;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
