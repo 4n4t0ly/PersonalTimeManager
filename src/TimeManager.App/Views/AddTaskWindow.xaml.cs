@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace TimeManager.App.Views
 {
@@ -22,6 +24,24 @@ namespace TimeManager.App.Views
         public AddTaskWindow()
         {
             InitializeComponent();
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(NameBox.Text == null)
+            {
+                MessageBox.Show("Name field cannot be empty.");
+                return;
+            }
+            if (!byte.TryParse(PriorityBox.Text, out byte priority) || !byte.TryParse(DiffBox.Text, out byte difficulty))
+            {
+                MessageBox.Show("Priority and Difficulty must be a number.");
+                return;
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

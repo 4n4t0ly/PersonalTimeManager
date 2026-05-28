@@ -53,7 +53,7 @@ namespace TimeManager.Core
         }
         public override string ToString()
         {
-            return $"{Name} | {Category} | {Priority} | {Dificulty}";
+            return $"{Name} | {Category} | {Priority} | {Dificulty}\n";
         }
     }
 }

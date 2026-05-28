@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimeManager.App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+356822810759a4494a2cd8b32c28434dc3aa1789")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7714f988bcc7b18bdef7dff90a875bfef98832ff")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimeManager.App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimeManager.App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
