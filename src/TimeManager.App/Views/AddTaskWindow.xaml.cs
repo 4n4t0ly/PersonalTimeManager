@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TimeManager.Core;
 
 namespace TimeManager.App.Views
 {
@@ -19,18 +20,30 @@ namespace TimeManager.App.Views
     /// </summary>
     public partial class AddTaskWindow : Window
     {
+        public TaskItem? CreatedTask { get; private set; }
         public AddTaskWindow()
         {
             InitializeComponent();
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if(NameBox.Text == null)
+            string name = NameBox.Text.Trim();
+            if(string.IsNullOrWhiteSpace(name))
             {
-                MessageBox.Show("Name field cannot be empty.");
+                MessageBox.Show("Task name is required.");
                 return;
             }
-            if (!byte.TryParse(PriorityBox.Text, out byte priority) || !byte.TryParse(DiffBox.Text, out byte difficulty))
+            string category = CategoryComboBox.Text.Trim();
+            string description = new TextRange(
+                DescriptionBox.Document.ContentStart,
+                DescriptionBox.Document.ContentEnd
+            ).Text.Trim();
+            byte priority;
+            if (!string.IsNullOrWhiteSpace(PriorityBox.Text))
+            {
+                priority = 5;
+            }
+            if (!byte.TryParse(PriorityBox.Text, out byte priority) || !byte.TryParse(DiffBox.Text, out byte Difficulty))
             {
                 MessageBox.Show("Priority and Difficulty must be a number.");
                 return;

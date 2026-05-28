@@ -47,11 +47,21 @@
             <StackPanel Grid.Column="2" Background="GhostWhite" Margin="5">
                 <Label Content="     Name     |    Category     |  P  |  D"
                        Height="27"/>
-                <ListBox Name="SceduleBox" Height="348"
+            <ListBox Name="SceduleBox" Height="348"
                          Width="200" Margin="5"
-                         ItemsSource="{Binding Tasks}"
-                         />
-                <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"/>
+                         ItemsSource="{Binding Tasks}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Width="80"/>
+                            <TextBlock Text="{Binding Priority}" Width="50"/>
+                            <TextBlock Text="{Binding Category}" Width="50"/>
+                            <TextBlock Text="{Binding Difficulty}" Width="50"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"/>
             </StackPanel>
 
     </Grid>

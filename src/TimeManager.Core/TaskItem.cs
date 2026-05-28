@@ -17,22 +17,30 @@ namespace TimeManager.Core
         public TimeSpan? TimeToDo { get; private set; }
 
         public byte Priority { get; private set; } //1 - 10
-        public byte Dificulty { get; private set; } //1 - 100
+        public byte Difficulty { get; private set; } //1 - 100
 
         public bool IsDone { get; private set; }
+
+        public const byte MinPriority = 1;
+        public const byte MaxPriority = 10;
+        public const byte DefaultPriority = 5;
+
+        public const byte MinDifficulty = 1;
+        public const byte MaxDifficulty = 100;
+        public const byte DefaultDifficulty = 20;
         public TaskItem(
             string name,  string category, string description,
-            byte priority = 5, byte dificulty = 20)
+            byte priority = DefaultPriority, byte Difficulty = DefaultDifficulty)
         {
-            if (priority < 1 || priority > 10)
+            if (priority < MinPriority || priority > MaxPriority)
                 throw new ArgumentOutOfRangeException(nameof(priority));
-            if (dificulty < 1 || dificulty > 100)
-                throw new ArgumentOutOfRangeException(nameof(dificulty));
+            if (Difficulty < MinDifficulty || Difficulty > MaxDifficulty)
+                throw new ArgumentOutOfRangeException(nameof(Difficulty));
             Name = name;
             Description = description;
             Category = category;
             Priority = priority;
-            Dificulty = dificulty;
+            Difficulty = Difficulty;
             IsDone = false;
         }
         public void MarkDone()
@@ -53,7 +61,7 @@ namespace TimeManager.Core
         }
         public override string ToString()
         {
-            return $"{Name} | {Category} | {Priority} | {Dificulty}\n";
+            return $"{Name} | {Category} | {Priority} | {Difficulty}\n";
         }
     }
 }

@@ -15,7 +15,7 @@ namespace TimeManager.App.ViewModels
         public string? Category => _task.Category;
         public string? Description => _task.Description;
         public byte Priority => _task.Priority;
-        public byte Dificulty => _task.Dificulty;
+        public byte Difficulty => _task.Difficulty;
         public DateTime? DeadLine => _task.DeadLine;
         public TimeSpan? TimeToDo => _task.TimeToDo;
         public bool IsDone => _task.IsDone;
