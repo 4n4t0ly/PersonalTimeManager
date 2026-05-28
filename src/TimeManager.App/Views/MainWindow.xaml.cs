@@ -41,7 +41,8 @@ public partial class MainWindow : Window
 
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
-
+        var window = new Views.AddTaskWindow();
+        window.ShowDialog();
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)

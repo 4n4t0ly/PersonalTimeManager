@@ -6,7 +6,7 @@ namespace TimeManager.App.ViewModels
     public class MainViewModel
     {
         private readonly TaskManager _manager = new();
-        public ObservableCollection<TaskItem> Tasks { get; }
+        public ObservableCollection<TaskItem> Tasks { get;}
         public MainViewModel()
         {
             Tasks = new ObservableCollection<TaskItem>();

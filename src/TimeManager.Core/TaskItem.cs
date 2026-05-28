@@ -33,6 +33,7 @@ namespace TimeManager.Core
             Category = category;
             Priority = priority;
             Dificulty = dificulty;
+            IsDone = false;
         }
         public void MarkDone()
         {
@@ -49,6 +50,10 @@ namespace TimeManager.Core
         public void SetTimeToDo(TimeSpan timeToDo)
         {
             TimeToDo = timeToDo;
+        }
+        public override string ToString()
+        {
+            return $"{Name} | {Category} | {Priority} | {Dificulty}";
         }
     }
 }

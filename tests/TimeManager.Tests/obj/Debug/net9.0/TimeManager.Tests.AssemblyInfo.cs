@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimeManager.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd285e7cd934ac50a381763a25c8d3a015b4d23b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac359369fdf8c8d5d8961b54f33fefd1706450b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimeManager.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimeManager.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
