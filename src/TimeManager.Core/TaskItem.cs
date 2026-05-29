@@ -61,7 +61,7 @@ namespace TimeManager.Core
         }
         public override string ToString()
         {
-            return $"{Name} | {Category} | {Priority} | {Difficulty}\n";
+            return $"Task name : {Name}\nCategory : {Category}\nP : {Priority} | D : {Difficulty}\n{Description}";
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,26 +21,77 @@ namespace TimeManager.App;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly DispatcherTimer _uiTimer;
+    private readonly Stopwatch _stopwatch;
+    private bool _isTaskRunning = false;
+    private bool _isCountdownMode = false;
+    private TimeSpan _plannedTimeToDo = TimeSpan.Zero;
     private readonly MainViewModel _viewModel;
     public MainWindow()
     {
         InitializeComponent();
         _viewModel = new MainViewModel();
         DataContext = _viewModel;
-        DispatcherTimer LiveTime = new DispatcherTimer();
-        LiveTime.Interval = TimeSpan.FromSeconds(1);
-        LiveTime.Tick += timer_Tick;
-        LiveTime.Start();
+        _stopwatch = new Stopwatch();
+        _uiTimer = new DispatcherTimer();
+        _uiTimer.Interval = TimeSpan.FromSeconds(1);
+        _uiTimer.Tick += UiTimer_Tick;
+        _uiTimer.Start();
+        CurrentTime.Content = DateTime.Now.ToString("HH:mm");
+        TimerLabel.Content = "00:00:00";
     }
-    void timer_Tick(object sender, EventArgs e)
+    void UiTimer_Tick(object? sender, EventArgs e)
     {
         CurrentTime.Content = DateTime.Now.ToString("HH:mm");
+        if (!_isTaskRunning)
+            return;
+        if(_isCountdownMode)
+        {
+            TimeSpan remainingTime = _plannedTimeToDo - _stopwatch.Elapsed;
+            if(remainingTime <= TimeSpan.Zero)
+            {
+                TimerLabel.Content = "00:00:00";
+                FinishTask();
+                return;
+            }
+            TimerLabel.Content = FormatTime(remainingTime);
+        }
+        else
+        {
+            TimeSpan elapsedTime = _stopwatch.Elapsed;
+            TimerLabel.Content = FormatTime(elapsedTime);
+        }
+    }
+    private void FinishTask()
+    {
+        _stopwatch.Stop();
+        TimeSpan finalTime;
+        if (_isCountdownMode)
+            finalTime = _plannedTimeToDo;
+        else
+            finalTime = _stopwatch.Elapsed;
+        TimerLabel.Content = FormatTime(finalTime);
+        _isTaskRunning = false;
+        StartButton.Content = "Start";
+    }
+    private static string FormatTime(TimeSpan time)
+    {
+        return time.ToString(@"hh\:mm\:ss");
     }
     private void StartButton_Click(object sender, RoutedEventArgs e)
     {
-
+        if(!_isTaskRunning)
+            StartTask();
+        else
+            FinishTask();
     }
-
+    private void StartTask()
+    {
+        _isCountdownMode = _plannedTimeToDo > TimeSpan.Zero;
+        _stopwatch.Restart();
+        _isTaskRunning=true;
+        StartButton.Content = "Done";
+    }
     private void SkipButton_Click(object sender, RoutedEventArgs e)
     {
 
@@ -54,12 +107,10 @@ public partial class MainWindow : Window
         var window = new Views.AddTaskWindow();
         window.ShowDialog();
         if(window.CreatedTask != null)
-        {
             _viewModel.AddTask(window.CreatedTask);
-        }
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
+    private void CalendarButton_Click(object sender, RoutedEventArgs e)
     {
 
     }

@@ -15,10 +15,10 @@
         <StackPanel Grid.Column="0" Background="GhostWhite" Margin="5">
             <ListBox Name="DaysBox" Height="375"
                          Width="200" Margin="5"/>
-            <Button Name="CalendarButton" Content="Calendar" Height="35" Width="209" Click="Button_Click"/>
+            <Button Name="CalendarButton" Content="Calendar" Height="35" Width="209" Click="CalendarButton_Click"/>
         </StackPanel>
             <StackPanel Grid.Column="1" Background="AliceBlue" Margin="5">
-                <Label Name="Timer" Content="00:00:00"
+                <Label Name="TimerLabel" Content="00:00:00"
                        FontSize="64"
                        HorizontalAlignment="Center"/>
                 <Label Name="CurrentTime" Content="%TIME%"
