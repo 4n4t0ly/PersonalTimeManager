@@ -19,10 +19,12 @@ namespace TimeManager.App;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly MainViewModel _viewModel;
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new MainViewModel();
+        _viewModel = new MainViewModel();
+        DataContext = _viewModel;
         DispatcherTimer LiveTime = new DispatcherTimer();
         LiveTime.Interval = TimeSpan.FromSeconds(1);
         LiveTime.Tick += timer_Tick;
@@ -51,6 +53,10 @@ public partial class MainWindow : Window
     {
         var window = new Views.AddTaskWindow();
         window.ShowDialog();
+        if(window.CreatedTask != null)
+        {
+            _viewModel.AddTask(window.CreatedTask);
+        }
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
