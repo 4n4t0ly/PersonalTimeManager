@@ -15,7 +15,8 @@ namespace TimeManager.Core
         //user will have acces to add new categories
         public DateTime? DeadLine { get; private set; }
         public TimeSpan? TimeToDo { get; private set; }
-
+        public DateTime? CompletedAt { get; private set; }
+        public TimeSpan? ActualTimeSpent { get; private set; }
         public byte Priority { get; private set; } //1 - 10
         public byte Difficulty { get; private set; } //1 - 100
 
@@ -42,6 +43,12 @@ namespace TimeManager.Core
             Priority = priority;
             Difficulty = difficulty;
             IsDone = false;
+        }
+        public void Complete(DateTime completedAt, TimeSpan actualTimeSpent)
+        {
+            IsDone = true;
+            CompletedAt = completedAt;
+            ActualTimeSpent = actualTimeSpent;
         }
         public void MarkDone()
         {

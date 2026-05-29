@@ -64,6 +64,8 @@ public partial class MainWindow : Window
     }
     private void FinishTask()
     {
+        if (_viewModel.CurrentTaskText == null)
+            return;
         _stopwatch.Stop();
         TimeSpan finalTime;
         if (_isCountdownMode)
@@ -73,6 +75,7 @@ public partial class MainWindow : Window
         TimerLabel.Content = FormatTime(finalTime);
         _isTaskRunning = false;
         StartButton.Content = "Start";
+        _viewModel.CompleteCurrentTask(finalTime);
     }
     private static string FormatTime(TimeSpan time)
     {
@@ -87,6 +90,13 @@ public partial class MainWindow : Window
     }
     private void StartTask()
     {
+        if (_viewModel.CurrentTaskText == null)
+        {
+            MessageBox.Show("No task selected.");
+          
+            return;
+        }
+        _plannedTimeToDo = _viewModel.CurrentTask.TimeToDo ?? TimeSpan.Zero;
         _isCountdownMode = _plannedTimeToDo > TimeSpan.Zero;
         _stopwatch.Restart();
         _isTaskRunning=true;
@@ -97,7 +107,7 @@ public partial class MainWindow : Window
 
     }
 
-    private void ShuffleButton_Click(object sender, RoutedEventArgs e)
+    private void PauseButton_Click(object sender, RoutedEventArgs e)
     {
 
     }

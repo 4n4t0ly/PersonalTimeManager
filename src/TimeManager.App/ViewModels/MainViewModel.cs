@@ -1,22 +1,48 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using TimeManager.Core;
 
 namespace TimeManager.App.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         private readonly TaskManager _manager = new();
-        public ObservableCollection<TaskViewModel> Tasks { get;}
-        public MainViewModel()
+        public ObservableCollection<TaskViewModel> Tasks { get; } = new();
+        public ObservableCollection<TaskViewModel> ComplitedTasks { get; } = new();
+        private TaskViewModel? _currentTask;
+        public TaskViewModel? CurrentTask
         {
-            Tasks = new ObservableCollection<TaskViewModel>();
-            var task = new TaskItem("Work of the year", "Education", "");
-            AddTask(task);
+            get => _currentTask;
+            set
+            {
+                _currentTask = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CurrentTaskText));
+            }
         }
+        public string CurrentTaskText =>
+            CurrentTask?.DisplayText ?? "No current task";
         public void AddTask(TaskItem task)
         {
             _manager.AddTask(task);
-            Tasks.Add(new TaskViewModel(task));
+            var taskViewModel = new TaskViewModel(task);
+            Tasks.Add(taskViewModel);
+            CurrentTask ??= taskViewModel;
+        }
+        public void CompleteCurrentTask(TimeSpan actualTimeSpent)
+        {
+            if (CurrentTask == null)
+                return;
+            CurrentTask.Complete(DateTime.Now, actualTimeSpent);
+            Tasks.Remove(CurrentTask);
+            ComplitedTasks.Add(CurrentTask);
+            CurrentTask = Tasks.FirstOrDefault();
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string? name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
