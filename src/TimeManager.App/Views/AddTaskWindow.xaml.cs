@@ -38,16 +38,64 @@ namespace TimeManager.App.Views
                 DescriptionBox.Document.ContentStart,
                 DescriptionBox.Document.ContentEnd
             ).Text.Trim();
-            byte priority;
+            byte priority = TaskItem.DefaultPriority;
             if (!string.IsNullOrWhiteSpace(PriorityBox.Text))
             {
-                priority = 5;
+                if(!byte.TryParse(PriorityBox.Text, out priority))
+                {
+                    MessageBox.Show("Priority must be a number");
+                    return;
+                }
             }
-            if (!byte.TryParse(PriorityBox.Text, out byte priority) || !byte.TryParse(DiffBox.Text, out byte Difficulty))
+            byte difficulty = TaskItem.DefaultDifficulty;
+            if (!string.IsNullOrWhiteSpace(DiffBox.Text))
             {
-                MessageBox.Show("Priority and Difficulty must be a number.");
+                if (!byte.TryParse(DiffBox.Text, out difficulty))
+                {
+                    MessageBox.Show("Difficulty must be a number");
+                    return;
+                }
+            }
+            if (priority < TaskItem.MinPriority || priority > TaskItem.MaxPriority)
+            {
+                MessageBox.Show($"Priority must be from {TaskItem.MinPriority} to {TaskItem.MaxPriority}.");
                 return;
             }
+            if (difficulty < TaskItem.MinDifficulty || difficulty > TaskItem.MaxDifficulty)
+            {
+                MessageBox.Show($"Difficulty must be from {TaskItem.MinDifficulty} to {TaskItem.MaxDifficulty}.");
+                return;
+            }
+            var task = new TaskItem(
+                name,
+                category,
+                description,
+                priority,
+                difficulty
+            );
+            if (DeadLinePick.SelectedDate.HasValue)
+            {
+                task.SetDeadLine(DeadLinePick.SelectedDate.Value);
+            }
+            if (!string.IsNullOrWhiteSpace(TimeToDoBox.Text))
+            {
+                if (TimeSpan.TryParse(TimeToDoBox.Text, out TimeSpan timeToDo))
+                {
+                    task.SetTimeToDo(timeToDo);
+                }
+                else
+                {
+                    MessageBox.Show("Time to do must be in format like [01:30].");
+                    return;
+                }
+            }
+            CreatedTask = task;
+            NameBox.Clear();
+            PriorityBox.Clear();
+            DiffBox.Clear();
+            DeadLinePick.SelectedDate = null;
+            TimeToDoBox.Clear();
+            DescriptionBox.Document.Blocks.Clear();
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -55,6 +103,10 @@ namespace TimeManager.App.Views
             {
                 DialogResult = true;
                 Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                AddButton_Click(sender, e);
             }
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -30,17 +30,17 @@ namespace TimeManager.Core
         public const byte DefaultDifficulty = 20;
         public TaskItem(
             string name,  string category, string description,
-            byte priority = DefaultPriority, byte Difficulty = DefaultDifficulty)
+            byte priority = DefaultPriority, byte difficulty = DefaultDifficulty)
         {
             if (priority < MinPriority || priority > MaxPriority)
                 throw new ArgumentOutOfRangeException(nameof(priority));
-            if (Difficulty < MinDifficulty || Difficulty > MaxDifficulty)
-                throw new ArgumentOutOfRangeException(nameof(Difficulty));
+            if (difficulty < MinDifficulty || Difficulty > MaxDifficulty)
+                throw new ArgumentOutOfRangeException(nameof(difficulty));
             Name = name;
             Description = description;
             Category = category;
             Priority = priority;
-            Difficulty = Difficulty;
+            Difficulty = difficulty;
             IsDone = false;
         }
         public void MarkDone()
