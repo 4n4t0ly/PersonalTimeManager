@@ -18,6 +18,9 @@ namespace TimeManager.App.ViewModels
         public byte Difficulty => _task.Difficulty;
         public DateTime? DeadLine => _task.DeadLine;
         public TimeSpan? TimeToDo => _task.TimeToDo;
+        public DateTime? CompletedAt => _task.CompletedAt;
+        public TimeSpan? ActualTimeSpent => _task.ActualTimeSpent;
+        public string ActualTimeSpentText => _task.ActualTimeSpent?.ToString(@"hh\:mm\:ss") ?? "";
         public bool IsDone => _task.IsDone;
         public string DisplayText =>
             $"Task name: {Name}\n" +
@@ -34,6 +37,9 @@ namespace TimeManager.App.ViewModels
         {
             _task.Complete (completedAt, actualTimeSpent);
             OnPropertyChanged (nameof(IsDone));
+            OnPropertyChanged(nameof(ActualTimeSpent));
+            OnPropertyChanged (nameof(ActualTimeSpentText));
+            OnPropertyChanged(nameof(CompletedAt));
         }
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
         {

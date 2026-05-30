@@ -21,7 +21,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Name}" Width="95"/>
-                            
+                            <TextBlock Text="{Binding ActualTimeSpentText}" Width="90"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

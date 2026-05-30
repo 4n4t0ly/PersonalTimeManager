@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using TimeManager.Core;
 
 namespace TimeManager.App.ViewModels
@@ -34,9 +35,10 @@ namespace TimeManager.App.ViewModels
         {
             if (CurrentTask == null)
                 return;
-            CurrentTask.Complete(DateTime.Now, actualTimeSpent);
-            Tasks.Remove(CurrentTask);
-            CompletedTasks.Add(CurrentTask);
+            var completedTask = CurrentTask;
+            completedTask.Complete(DateTime.Now, actualTimeSpent);
+            CompletedTasks.Add(completedTask);
+            Tasks.Remove(completedTask);
             CurrentTask = Tasks.FirstOrDefault();
         }
         public event PropertyChangedEventHandler? PropertyChanged;
