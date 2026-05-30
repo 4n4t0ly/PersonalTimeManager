@@ -25,6 +25,11 @@ namespace TimeManager.App.ViewModels
             $"P: {Priority} | D: {Difficulty}\n" +
             $"{Description}";
         public event PropertyChangedEventHandler? PropertyChanged;
+        public void MarkDone()
+        {
+            _task.MarkDone();
+            OnPropertyChanged(nameof(IsDone));
+        }
         public void Complete (DateTime completedAt, TimeSpan actualTimeSpent)
         {
             _task.Complete (completedAt, actualTimeSpent);

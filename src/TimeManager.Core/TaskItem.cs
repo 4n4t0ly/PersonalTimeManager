@@ -11,14 +11,12 @@ namespace TimeManager.Core
         public string Name { get; private set; }
         public string? Category { get; private set; }
         public string? Description { get; private set; }
-        //Have to add special structer, where 0 is None Category,
-        //user will have acces to add new categories
         public DateTime? DeadLine { get; private set; }
         public TimeSpan? TimeToDo { get; private set; }
         public DateTime? CompletedAt { get; private set; }
         public TimeSpan? ActualTimeSpent { get; private set; }
-        public byte Priority { get; private set; } //1 - 10
-        public byte Difficulty { get; private set; } //1 - 100
+        public byte Priority { get; private set; }
+        public byte Difficulty { get; private set; }
 
         public bool IsDone { get; private set; }
 
@@ -35,7 +33,7 @@ namespace TimeManager.Core
         {
             if (priority < MinPriority || priority > MaxPriority)
                 throw new ArgumentOutOfRangeException(nameof(priority));
-            if (difficulty < MinDifficulty || Difficulty > MaxDifficulty)
+            if (difficulty < MinDifficulty || difficulty > MaxDifficulty)
                 throw new ArgumentOutOfRangeException(nameof(difficulty));
             Name = name;
             Description = description;
@@ -46,7 +44,7 @@ namespace TimeManager.Core
         }
         public void Complete(DateTime completedAt, TimeSpan actualTimeSpent)
         {
-            IsDone = true;
+            MarkDone();
             CompletedAt = completedAt;
             ActualTimeSpent = actualTimeSpent;
         }
@@ -57,6 +55,8 @@ namespace TimeManager.Core
         public void MarkUndone()
         {
             IsDone = false;
+            CompletedAt = null;
+            ActualTimeSpent = null;
         }
         public void SetDeadLine(DateTime deadLine)
         {
@@ -65,10 +65,6 @@ namespace TimeManager.Core
         public void SetTimeToDo(TimeSpan timeToDo)
         {
             TimeToDo = timeToDo;
-        }
-        public override string ToString()
-        {
-            return $"Task name : {Name}\nCategory : {Category}\nP : {Priority} | D : {Difficulty}\n{Description}";
         }
     }
 }

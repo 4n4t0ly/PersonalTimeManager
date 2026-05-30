@@ -64,7 +64,7 @@ public partial class MainWindow : Window
     }
     private void FinishTask()
     {
-        if (_viewModel.CurrentTaskText == null)
+        if (_viewModel.CurrentTask == null)
             return;
         _stopwatch.Stop();
         TimeSpan finalTime;
@@ -90,10 +90,9 @@ public partial class MainWindow : Window
     }
     private void StartTask()
     {
-        if (_viewModel.CurrentTaskText == null)
+        if (_viewModel.CurrentTask == null)
         {
             MessageBox.Show("No task selected.");
-          
             return;
         }
         _plannedTimeToDo = _viewModel.CurrentTask.TimeToDo ?? TimeSpan.Zero;
@@ -111,13 +110,12 @@ public partial class MainWindow : Window
     {
 
     }
-
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
         var window = new Views.AddTaskWindow();
+        window.TaskCreated += task =>
+            _viewModel.AddTask(task);
         window.ShowDialog();
-        if(window.CreatedTask != null)
-            _viewModel.AddTask(window.CreatedTask);
     }
 
     private void CalendarButton_Click(object sender, RoutedEventArgs e)

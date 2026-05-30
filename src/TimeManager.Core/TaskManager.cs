@@ -3,9 +3,10 @@
     public class TaskManager
     {
         private readonly List<TaskItem> _tasks = new();
-        public IReadOnlyList<TaskItem> Task => _tasks;
+        public IReadOnlyList<TaskItem> Tasks => _tasks;
         public void AddTask(TaskItem task)
         {
+            ArgumentNullException.ThrowIfNull(task);
             _tasks.Add(task);
         }
         public void RemoveTask(TaskItem task)

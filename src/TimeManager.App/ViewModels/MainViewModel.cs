@@ -9,7 +9,7 @@ namespace TimeManager.App.ViewModels
     {
         private readonly TaskManager _manager = new();
         public ObservableCollection<TaskViewModel> Tasks { get; } = new();
-        public ObservableCollection<TaskViewModel> ComplitedTasks { get; } = new();
+        public ObservableCollection<TaskViewModel> CompletedTasks { get; } = new();
         private TaskViewModel? _currentTask;
         public TaskViewModel? CurrentTask
         {
@@ -36,7 +36,7 @@ namespace TimeManager.App.ViewModels
                 return;
             CurrentTask.Complete(DateTime.Now, actualTimeSpent);
             Tasks.Remove(CurrentTask);
-            ComplitedTasks.Add(CurrentTask);
+            CompletedTasks.Add(CurrentTask);
             CurrentTask = Tasks.FirstOrDefault();
         }
         public event PropertyChangedEventHandler? PropertyChanged;

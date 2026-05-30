@@ -20,11 +20,11 @@ namespace TimeManager.App.Views
     /// </summary>
     public partial class AddTaskWindow : Window
     {
-        public TaskItem? CreatedTask { get; private set; }
         public AddTaskWindow()
         {
             InitializeComponent();
         }
+        public event Action<TaskItem>? TaskCreated;
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string name = NameBox.Text.Trim();
@@ -79,7 +79,7 @@ namespace TimeManager.App.Views
             }
             if (!string.IsNullOrWhiteSpace(TimeToDoBox.Text))
             {
-                if (TimeSpan.TryParse(TimeToDoBox.Text, out TimeSpan timeToDo))
+                if (TimeSpan.TryParseExact(TimeToDoBox.Text, @"hh\:mm",null, out TimeSpan timeToDo))
                 {
                     task.SetTimeToDo(timeToDo);
                 }
@@ -89,13 +89,19 @@ namespace TimeManager.App.Views
                     return;
                 }
             }
-            CreatedTask = task;
+            TaskCreated?.Invoke(task);
+            ClearFields();
+        }
+        private void ClearFields()
+        {
             NameBox.Clear();
             PriorityBox.Clear();
             DiffBox.Clear();
             DeadLinePick.SelectedDate = null;
             TimeToDoBox.Clear();
             DescriptionBox.Document.Blocks.Clear();
+
+            NameBox.Focus();
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
