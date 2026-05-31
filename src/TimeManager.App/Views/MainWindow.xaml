@@ -47,10 +47,10 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="SkipButton"
-                    Content="Skip"
+                <Button Name="DeleteButton"
+                    Content="Delete Task"
                     Grid.Column="0"
-                    Height="35" Click="SkipButton_Click"/>
+                    Height="35" Click="DeleteButton_Click"/>
                 <Button Name="PauseButton"
                     Content="Pause"
                     Grid.Column="1"

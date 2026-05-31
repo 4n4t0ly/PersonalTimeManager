@@ -25,6 +25,7 @@ public partial class MainWindow : Window
     private readonly Stopwatch _stopwatch;
     private bool _isTaskRunning = false;
     private bool _isCountdownMode = false;
+    private bool _isTaskPaused = false;
     private TimeSpan _plannedTimeToDo = TimeSpan.Zero;
     private readonly MainViewModel _viewModel;
     public MainWindow()
@@ -67,15 +68,15 @@ public partial class MainWindow : Window
         if (_viewModel.CurrentTask == null)
             return;
         _stopwatch.Stop();
-        TimeSpan finalTime;
-        if (_isCountdownMode)
-            finalTime = _plannedTimeToDo;
-        else
-            finalTime = _stopwatch.Elapsed;
-        TimerLabel.Content = FormatTime(finalTime);
+        TimeSpan actualTimeSpent = _stopwatch.Elapsed;
+        if (_isCountdownMode && actualTimeSpent > _plannedTimeToDo)
+            actualTimeSpent = _plannedTimeToDo;
+        TimerLabel.Content = FormatTime(actualTimeSpent);
         _isTaskRunning = false;
+        _isTaskPaused = false;
         StartButton.Content = "Start";
-        _viewModel.CompleteCurrentTask(finalTime);
+        PauseButton.Content = "Pause";
+        _viewModel.CompleteCurrentTask(actualTimeSpent);
     }
     private static string FormatTime(TimeSpan time)
     {
@@ -83,10 +84,10 @@ public partial class MainWindow : Window
     }
     private void StartButton_Click(object sender, RoutedEventArgs e)
     {
-        if(!_isTaskRunning)
-            StartTask();
-        else
+        if(_isTaskRunning || _isTaskPaused)
             FinishTask();
+        else
+            StartTask();
     }
     private void StartTask()
     {
@@ -99,16 +100,38 @@ public partial class MainWindow : Window
         _isCountdownMode = _plannedTimeToDo > TimeSpan.Zero;
         _stopwatch.Restart();
         _isTaskRunning=true;
+        _isTaskPaused=false;
+        PauseButton.Content = "Pause";
         StartButton.Content = "Done";
     }
-    private void SkipButton_Click(object sender, RoutedEventArgs e)
+    private void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
-
+        if (_viewModel.CurrentTask == null)
+            return;
     }
 
     private void PauseButton_Click(object sender, RoutedEventArgs e)
     {
-
+        if (_viewModel.CurrentTask == null)
+            return;
+        if(_isTaskRunning)
+            PauseTask();
+        else if (_isTaskPaused)
+            ResumeTask();
+    }
+    private void PauseTask()
+    {
+        _stopwatch.Stop();
+        _isTaskRunning = false;
+        _isTaskPaused = true;
+        PauseButton.Content = "Resume";
+    }
+    private void ResumeTask()
+    {
+        _stopwatch.Start();
+        _isTaskRunning = true;
+        _isTaskPaused = false;
+        PauseButton.Content = "Pause";
     }
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
