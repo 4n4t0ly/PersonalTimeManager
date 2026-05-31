@@ -55,5 +55,14 @@ namespace TimeManager.App.ViewModels
                 Tasks.Add(new TaskViewModel(task));
             CurrentTask = Tasks.FirstOrDefault();
         }
+        public void DeleteCurrentTask()
+        {
+            if (CurrentTask == null)
+                return;
+            TaskViewModel taskToDelete = CurrentTask;
+            _manager.RemoveTask(taskToDelete.Model);
+            Tasks.Remove(taskToDelete);
+            CurrentTask = Tasks.FirstOrDefault();
+        }
     }
 }

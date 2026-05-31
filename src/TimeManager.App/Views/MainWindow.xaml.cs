@@ -107,9 +107,31 @@ public partial class MainWindow : Window
     private void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
         if (_viewModel.CurrentTask == null)
+        {
+            MessageBox.Show("No task selected.");
             return;
+        }
+        MessageBoxResult result = MessageBox.Show(
+            "Delete selected task?",
+            "Delete task",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
+        if (result != MessageBoxResult.Yes)
+            return;
+        ResetTimerState();
+        _viewModel.DeleteCurrentTask();
     }
-
+    private void ResetTimerState()
+    {
+        _stopwatch.Reset();
+        _isTaskRunning = false;
+        _isTaskPaused = false;
+        _isCountdownMode = false;
+        _plannedTimeToDo = TimeSpan.Zero;
+        TimerLabel.Content = "00:00:00";
+        StartButton.Content = "Start";
+        PauseButton.Content = "Pause";
+    }
     private void PauseButton_Click(object sender, RoutedEventArgs e)
     {
         if (_viewModel.CurrentTask == null)
