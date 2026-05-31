@@ -12,19 +12,33 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="220"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Background="GhostWhite" Margin="5">
-            <ListBox Name="DaysBox" Height="375"
-                         Width="200" Margin="5"/>
-            <Button Name="CalendarButton" Content="Calendar" Height="35" Width="209" Click="Button_Click"/>
+        <StackPanel Grid.Column="2" Background="GhostWhite" Margin="5">
+            <Label Content="Completed tasks:"/>
+            <ListBox Name="CompletedTasksBox"
+                     Height="349" ItemsSource="{Binding CompletedTasks}"
+                     Width="200" Margin="5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Width="95"/>
+                            <TextBlock Text="{Binding ActualTimeSpentText}" Width="90"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Name="CalendarButton" Content="Calendar" Height="35" Width="209" Click="CalendarButton_Click"/>
         </StackPanel>
             <StackPanel Grid.Column="1" Background="AliceBlue" Margin="5">
-                <Label Name="Timer" Content="00:00:00"
+                <Label Name="TimerLabel" Content="00:00:00"
                        FontSize="64"
                        HorizontalAlignment="Center"/>
-                <Label Name="CurrentTime" Content="00:00"
+                <Label Name="CurrentTime" Content="%TIME%"
                        FontSize="22"
                        HorizontalAlignment="Right"/>
-                <TextBox Name="DescriptionBox"
+                <TextBlock
+                        Background="White"
+                         Text="{Binding CurrentTaskText}"
                          Height="206"
                          TextWrapping="Wrap" Margin="5"/>
             <Button Name="StartButton" Content="Start" Height="35" Click="StartButton_Click"/>
@@ -37,20 +51,32 @@
                     Content="Skip"
                     Grid.Column="0"
                     Height="35" Click="SkipButton_Click"/>
-                <Button Name="ShuffleButton"
-                    Content="Shuffle tasks"
+                <Button Name="PauseButton"
+                    Content="Pause"
                     Grid.Column="1"
-                    Height="35" Click="ShuffleButton_Click"/>
+                    Height="35" Click="PauseButton_Click"/>
             </Grid>
             </StackPanel>
 
-            <StackPanel Grid.Column="2" Background="GhostWhite" Margin="5">
-                <Label Content="Name    Priority    Type    Difficulty"
+            <StackPanel Grid.Column="0" Background="GhostWhite" Margin="5">
+                <Label Content="     Name     |    Category     |  P  |  D"
                        Height="27"/>
-                <ListBox Name="SceduleBox" Height="348"
+            <ListBox Name="ScheduleBox" Height="348"
                          Width="200" Margin="5"
-                         />
-                <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"/>
+                         ItemsSource="{Binding Tasks}"
+                         SelectedItem="{Binding CurrentTask, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Width="80"/>
+                            <TextBlock Text="{Binding Category}" Width="70"/>
+                            <TextBlock Text="{Binding Priority}" Width="15"/>
+                            <TextBlock Text="{Binding Difficulty}" Width="20"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"/>
             </StackPanel>
 
     </Grid>

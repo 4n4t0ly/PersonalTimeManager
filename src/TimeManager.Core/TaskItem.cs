@@ -11,28 +11,42 @@ namespace TimeManager.Core
         public string Name { get; private set; }
         public string? Category { get; private set; }
         public string? Description { get; private set; }
-        //Have to add special structer, where 0 is None Category,
-        //user will have acces to add new categories
         public DateTime? DeadLine { get; private set; }
         public TimeSpan? TimeToDo { get; private set; }
-
-        public byte Priority { get; private set; } //1 - 10
-        public byte Dificulty { get; private set; } //1 - 100
+        public DateTime? CompletedAt { get; private set; }
+        public TimeSpan? ActualTimeSpent { get; private set; }
+        public byte Priority { get; private set; }
+        public byte Difficulty { get; private set; }
 
         public bool IsDone { get; private set; }
+
+        public const byte MinPriority = 1;
+        public const byte MaxPriority = 10;
+        public const byte DefaultPriority = 5;
+
+        public const byte MinDifficulty = 1;
+        public const byte MaxDifficulty = 100;
+        public const byte DefaultDifficulty = 20;
         public TaskItem(
             string name,  string category, string description,
-            byte priority = 5, byte dificulty = 20)
+            byte priority = DefaultPriority, byte difficulty = DefaultDifficulty)
         {
-            if (priority < 1 || priority > 10)
+            if (priority < MinPriority || priority > MaxPriority)
                 throw new ArgumentOutOfRangeException(nameof(priority));
-            if (dificulty < 1 || dificulty > 100)
-                throw new ArgumentOutOfRangeException(nameof(dificulty));
+            if (difficulty < MinDifficulty || difficulty > MaxDifficulty)
+                throw new ArgumentOutOfRangeException(nameof(difficulty));
             Name = name;
             Description = description;
             Category = category;
             Priority = priority;
-            Dificulty = dificulty;
+            Difficulty = difficulty;
+            IsDone = false;
+        }
+        public void Complete(DateTime completedAt, TimeSpan actualTimeSpent)
+        {
+            MarkDone();
+            CompletedAt = completedAt;
+            ActualTimeSpent = actualTimeSpent;
         }
         public void MarkDone()
         {
@@ -41,6 +55,8 @@ namespace TimeManager.Core
         public void MarkUndone()
         {
             IsDone = false;
+            CompletedAt = null;
+            ActualTimeSpent = null;
         }
         public void SetDeadLine(DateTime deadLine)
         {
