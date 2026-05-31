@@ -21,6 +21,7 @@ namespace TimeManager.App.ViewModels
         public DateTime? CompletedAt => _task.CompletedAt;
         public TimeSpan? ActualTimeSpent => _task.ActualTimeSpent;
         public string ActualTimeSpentText => _task.ActualTimeSpent?.ToString(@"hh\:mm\:ss") ?? "";
+        public TaskItem Model => _task;
         public bool IsDone => _task.IsDone;
         public string DisplayText =>
             $"Task name: {Name}\n" +

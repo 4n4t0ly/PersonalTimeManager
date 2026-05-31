@@ -116,6 +116,7 @@ public partial class MainWindow : Window
         window.TaskCreated += task =>
             _viewModel.AddTask(task);
         window.ShowDialog();
+        _viewModel.AutoSortTasks();
     }
 
     private void CalendarButton_Click(object sender, RoutedEventArgs e)

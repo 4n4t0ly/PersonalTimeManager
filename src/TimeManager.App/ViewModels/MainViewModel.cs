@@ -46,5 +46,14 @@ namespace TimeManager.App.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+        public void AutoSortTasks()
+        {
+            List<TaskItem> sortedTasks = TaskAutoScheduler
+                .BuildSchedule(Tasks.Select(t => t.Model));
+            Tasks.Clear();
+            foreach (TaskItem task in sortedTasks)
+                Tasks.Add(new TaskViewModel(task));
+            CurrentTask = Tasks.FirstOrDefault();
+        }
     }
 }

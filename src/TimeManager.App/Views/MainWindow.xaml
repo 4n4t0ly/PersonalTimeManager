@@ -68,10 +68,10 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}" Width="95"/>
-                            <TextBlock Text="{Binding Category}" Width="60"/>
+                            <TextBlock Text="{Binding Name}" Width="80"/>
+                            <TextBlock Text="{Binding Category}" Width="70"/>
                             <TextBlock Text="{Binding Priority}" Width="15"/>
-                            <TextBlock Text="{Binding Difficulty}" Width="15"/>
+                            <TextBlock Text="{Binding Difficulty}" Width="20"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
