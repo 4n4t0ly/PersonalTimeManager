@@ -123,5 +123,14 @@ namespace TimeManager.Data
                 : null;
             db.SaveChanges();
         }
+        public void DeleteTask(TaskItem task)
+        {
+            using var db = new TimeManagerDbContext();
+            TaskEntity? entity = db.Tasks.FirstOrDefault(t => t.Id == task.Id);
+            if (entity == null)
+                return;
+            db.Tasks.Remove(entity);
+            db.SaveChanges();
+        }
     }
 }

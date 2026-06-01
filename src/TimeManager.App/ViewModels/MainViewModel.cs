@@ -67,7 +67,8 @@ namespace TimeManager.App.ViewModels
         {
             if (CurrentTask == null)
                 return;
-            TaskViewModel taskToDelete = CurrentTask;
+            var taskToDelete = CurrentTask;
+            _repository.DeleteTask(taskToDelete.Model);
             _manager.RemoveTask(taskToDelete.Model);
             Tasks.Remove(taskToDelete);
             CurrentTask = Tasks.FirstOrDefault();
