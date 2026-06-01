@@ -10,15 +10,18 @@ namespace TimeManager.Data
 {
     public class TaskRepository
     {
-        public void AddCategory(string name)
+        public void AddCategory(string categoryName)
         {
+            if (string.IsNullOrWhiteSpace(categoryName))
+                return;
+            categoryName = categoryName.Trim();
             using var db = new TimeManagerDbContext();
-            bool exists = db.Categories.Any(c => c.Name == name);
+            bool exists = db.Categories.Any(c => c.Name == categoryName);
             if (exists)
                 return;
             db.Categories.Add(new CategoryEntity
             {
-                Name = name
+                Name = categoryName
             });
             db.SaveChanges();
         }
@@ -131,6 +134,14 @@ namespace TimeManager.Data
                 return;
             db.Tasks.Remove(entity);
             db.SaveChanges();
+        }
+        public List<string> LoadCategoryNames()
+        {
+            using var db = new TimeManagerDbContext();
+            return db.Categories
+                .OrderBy(c => c.Name)
+                .Select(c => c.Name)
+                .ToList();
         }
     }
 }

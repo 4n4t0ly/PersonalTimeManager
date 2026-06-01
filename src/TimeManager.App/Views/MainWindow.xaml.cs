@@ -157,7 +157,7 @@ public partial class MainWindow : Window
     }
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
-        var window = new Views.AddTaskWindow();
+        var window = new Views.AddTaskWindow(_viewModel.Categories);
         window.TaskCreated += task =>
             _viewModel.AddTask(task);
         window.ShowDialog();

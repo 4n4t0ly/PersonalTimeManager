@@ -12,10 +12,12 @@ namespace TimeManager.App.ViewModels
         private readonly TaskManager _manager = new();
         public ObservableCollection<TaskViewModel> Tasks { get; } = new();
         public ObservableCollection<TaskViewModel> CompletedTasks { get; } = new();
+        public ObservableCollection<string> Categories { get; } = new();
         private TaskViewModel? _currentTask;
         private readonly TaskRepository _repository = new();
         public MainViewModel()
         {
+            LoadCategoriesFromDatabase();
             LoadTasksFromDatabase();
         }
         public TaskViewModel? CurrentTask
@@ -36,6 +38,9 @@ namespace TimeManager.App.ViewModels
             _manager.AddTask(savedTask);
             var taskViewModel = new TaskViewModel(savedTask);
             Tasks.Add(taskViewModel);
+            if (!string.IsNullOrWhiteSpace(savedTask.Category) &&
+                !Categories.Contains(savedTask.Category))
+                Categories.Add(savedTask.Category);
             CurrentTask ??= taskViewModel;
         }
         public void CompleteCurrentTask(TimeSpan actualTimeSpent)
@@ -86,6 +91,12 @@ namespace TimeManager.App.ViewModels
                 CompletedTasks.Add(taskViewModel);
             }
             CurrentTask = Tasks.FirstOrDefault();
+        }
+        private void LoadCategoriesFromDatabase()
+        {
+            Categories.Clear();
+            foreach (string category in _repository.LoadCategoryNames())
+                Categories.Add(category);
         }
     }
 }
