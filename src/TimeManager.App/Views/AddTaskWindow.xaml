@@ -45,7 +45,10 @@
         <Label Grid.Row="1" Grid.Column="0" Content="Category:"/>
         <ComboBox Grid.Row="1" Grid.Column="1"
           IsEditable="True"
-          Name="CategoryComboBox"/>
+          Name="CategoryComboBox"
+           ItemsSource="{Binding Categories}"
+            DisplayMemberPath="Name"
+            SelectedItem="{Binding SelectedCategory}"/>
         <Label Grid.Column="0" Grid.Row="2" Content="DeadLine:"/>
         <DatePicker Grid.Row="2" Grid.Column="1"
                     Name="DeadLinePick"/>

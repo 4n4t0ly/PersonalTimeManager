@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using TimeManager.Core;
+using TimeManager.Data;
 
 namespace TimeManager.App.ViewModels
 {
@@ -12,6 +13,11 @@ namespace TimeManager.App.ViewModels
         public ObservableCollection<TaskViewModel> Tasks { get; } = new();
         public ObservableCollection<TaskViewModel> CompletedTasks { get; } = new();
         private TaskViewModel? _currentTask;
+        private readonly TaskRepository _repository = new();
+        public MainViewModel()
+        {
+            LoadTasksFromDatabase();
+        }
         public TaskViewModel? CurrentTask
         {
             get => _currentTask;
@@ -26,8 +32,9 @@ namespace TimeManager.App.ViewModels
             CurrentTask?.DisplayText ?? "No current task";
         public void AddTask(TaskItem task)
         {
-            _manager.AddTask(task);
-            var taskViewModel = new TaskViewModel(task);
+            TaskItem savedTask = _repository.AddTask(task);
+            _manager.AddTask(savedTask);
+            var taskViewModel = new TaskViewModel(savedTask);
             Tasks.Add(taskViewModel);
             CurrentTask ??= taskViewModel;
         }
@@ -37,6 +44,7 @@ namespace TimeManager.App.ViewModels
                 return;
             var completedTask = CurrentTask;
             completedTask.Complete(DateTime.Now, actualTimeSpent);
+            _repository.CompleteTask(completedTask.Model);
             CompletedTasks.Add(completedTask);
             Tasks.Remove(completedTask);
             CurrentTask = Tasks.FirstOrDefault();
@@ -62,6 +70,20 @@ namespace TimeManager.App.ViewModels
             TaskViewModel taskToDelete = CurrentTask;
             _manager.RemoveTask(taskToDelete.Model);
             Tasks.Remove(taskToDelete);
+            CurrentTask = Tasks.FirstOrDefault();
+        }
+        private void LoadTasksFromDatabase()
+        {
+            foreach (TaskItem task in _repository.LoadActiveTasks())
+            {
+                var taskViewModel = new TaskViewModel(task);
+                Tasks.Add(taskViewModel);
+            }
+            foreach (TaskItem task in _repository.LoadCompletedTasks())
+            {
+                var taskViewModel = new TaskViewModel(task);
+                CompletedTasks.Add(taskViewModel);
+            }
             CurrentTask = Tasks.FirstOrDefault();
         }
     }
