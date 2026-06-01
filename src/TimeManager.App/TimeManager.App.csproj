@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TimeManager.Core\TimeManager.Core.csproj" />
+    <ProjectReference Include="..\TimeManager.Data\TimeManager.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TimeManager.Core;
+using System.Collections.Generic;
 
 namespace TimeManager.App.Views
 {
@@ -20,9 +21,10 @@ namespace TimeManager.App.Views
     /// </summary>
     public partial class AddTaskWindow : Window
     {
-        public AddTaskWindow()
+        public AddTaskWindow(IEnumerable<string> categories)
         {
             InitializeComponent();
+            CategoryComboBox.ItemsSource = categories;
         }
         public event Action<TaskItem>? TaskCreated;
         private void AddButton_Click(object sender, RoutedEventArgs e)

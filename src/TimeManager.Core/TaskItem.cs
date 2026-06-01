@@ -17,8 +17,8 @@ namespace TimeManager.Core
         public TimeSpan? ActualTimeSpent { get; private set; }
         public byte Priority { get; private set; }
         public byte Difficulty { get; private set; }
-
         public bool IsDone { get; private set; }
+        public int Id {  get; private set; }
 
         public const byte MinPriority = 1;
         public const byte MaxPriority = 10;
@@ -29,7 +29,8 @@ namespace TimeManager.Core
         public const byte DefaultDifficulty = 20;
         public TaskItem(
             string name,  string category, string description,
-            byte priority = DefaultPriority, byte difficulty = DefaultDifficulty)
+            byte priority = DefaultPriority, byte difficulty = DefaultDifficulty,
+            int id = 0)
         {
             if (priority < MinPriority || priority > MaxPriority)
                 throw new ArgumentOutOfRangeException(nameof(priority));
@@ -41,6 +42,7 @@ namespace TimeManager.Core
             Priority = priority;
             Difficulty = difficulty;
             IsDone = false;
+            Id = id;
         }
         public void Complete(DateTime completedAt, TimeSpan actualTimeSpent)
         {
