@@ -33,6 +33,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         _viewModel = new MainViewModel();
         DataContext = _viewModel;
+        _viewModel.AutoSortTasks();
         _stopwatch = new Stopwatch();
         _uiTimer = new DispatcherTimer();
         _uiTimer.Interval = TimeSpan.FromSeconds(1);

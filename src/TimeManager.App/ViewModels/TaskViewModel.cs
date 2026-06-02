@@ -27,6 +27,7 @@ namespace TimeManager.App.ViewModels
             $"Task name: {Name}\n" +
             $"Category: {Category}\n" +
             $"P: {Priority} | D: {Difficulty}\n" +
+            $"{DeadLine?.ToString("yyyy/MM/dd")}\n" +
             $"{Description}";
         public event PropertyChangedEventHandler? PropertyChanged;
         public void MarkDone()
