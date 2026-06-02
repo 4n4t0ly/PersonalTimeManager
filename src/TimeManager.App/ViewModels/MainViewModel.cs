@@ -78,6 +78,16 @@ namespace TimeManager.App.ViewModels
             Tasks.Remove(taskToDelete);
             CurrentTask = Tasks.FirstOrDefault();
         }
+        public void ClearCompletedTasks()
+        {
+            if (CompletedTasks == null)
+                return;
+            foreach (var completedTask in CompletedTasks)
+            {
+                _repository.DeleteTask(completedTask.Model);
+                _manager.RemoveTask(completedTask.Model);
+            }
+        }
         private void LoadTasksFromDatabase()
         {
             foreach (TaskItem task in _repository.LoadActiveTasks())

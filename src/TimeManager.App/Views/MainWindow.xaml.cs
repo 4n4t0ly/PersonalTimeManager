@@ -164,8 +164,15 @@ public partial class MainWindow : Window
         _viewModel.AutoSortTasks();
     }
 
-    private void CalendarButton_Click(object sender, RoutedEventArgs e)
+    private void ClearButton_Click(object sender, RoutedEventArgs e)
     {
-
+        MessageBoxResult result = MessageBox.Show(
+           "Delete comleted tasks?",
+           "Delete task",
+           MessageBoxButton.YesNo,
+           MessageBoxImage.Warning);
+        if (result != MessageBoxResult.Yes)
+            return;
+        _viewModel.ClearCompletedTasks();
     }
 }

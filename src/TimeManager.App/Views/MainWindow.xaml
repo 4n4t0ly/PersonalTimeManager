@@ -27,7 +27,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Button Name="CalendarButton" Content="Calendar" Height="35" Width="209" Click="CalendarButton_Click"/>
+            <Button Name="ClearButton" Content="Clear" Height="35" Width="209" Click="ClearButton_Click"/>
         </StackPanel>
             <StackPanel Grid.Column="1" Background="AliceBlue" Margin="5">
                 <Label Name="TimerLabel" Content="00:00:00"
