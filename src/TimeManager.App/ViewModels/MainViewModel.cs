@@ -80,13 +80,14 @@ namespace TimeManager.App.ViewModels
         }
         public void ClearCompletedTasks()
         {
-            if (CompletedTasks == null)
+            if (CompletedTasks.Count == 0)
                 return;
-            foreach (var completedTask in CompletedTasks)
+            foreach (var completedTask in CompletedTasks.ToList())
             {
                 _repository.DeleteTask(completedTask.Model);
                 _manager.RemoveTask(completedTask.Model);
             }
+            CompletedTasks.Clear();
         }
         private void LoadTasksFromDatabase()
         {

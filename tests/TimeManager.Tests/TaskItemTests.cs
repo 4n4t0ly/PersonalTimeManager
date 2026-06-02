@@ -24,7 +24,7 @@ namespace TimeManager.Tests
         [TestMethod]
         public void Constructor_WithPriorityOutOfRange_ThrowsExeption()
         {
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+            Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
             {
                 new TaskItem(
                     "Study",
