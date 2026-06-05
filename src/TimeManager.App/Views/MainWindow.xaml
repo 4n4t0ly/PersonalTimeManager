@@ -12,10 +12,15 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="220"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="2" Background="GhostWhite" Margin="5">
+        <DockPanel Grid.Column="2" Background="LightPink"
+                   Margin="5">
+        <StackPanel Background="GhostWhite"
+                    DockPanel.Dock="Top">
             <Label Content="Completed tasks:"/>
-            <ListBox Name="CompletedTasksBox"
-                     Height="349" ItemsSource="{Binding CompletedTasks}"
+        </StackPanel>
+            <Button Name="ClearButton" Content="Clear" Height="35" Width="209"
+                    Click="ClearButton_Click" DockPanel.Dock="Bottom"/>
+        <ListBox Name="CompletedTasksBox" ItemsSource="{Binding CompletedTasks}"
                      Width="200" Margin="5">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -27,20 +32,19 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Button Name="ClearButton" Content="Clear" Height="35" Width="209" Click="ClearButton_Click"/>
-        </StackPanel>
-            <StackPanel Grid.Column="1" Background="AliceBlue" Margin="5">
+        </DockPanel>
+        <DockPanel Background="AntiqueWhite" Grid.Column="1"
+                   Margin="5">
+            <StackPanel Background="AliceBlue"
+                        DockPanel.Dock="Top">
                 <Label Name="TimerLabel" Content="00:00:00"
                        FontSize="64"
                        HorizontalAlignment="Center"/>
                 <Label Name="CurrentTime" Content="%TIME%"
                        FontSize="22"
                        HorizontalAlignment="Right"/>
-                <TextBlock
-                        Background="White"
-                         Text="{Binding CurrentTaskText}"
-                         Height="206"
-                         TextWrapping="Wrap" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom">
             <Button Name="StartButton" Content="Start" Height="35" Click="StartButton_Click"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -57,14 +61,24 @@
                     Height="35" Click="PauseButton_Click"/>
             </Grid>
             </StackPanel>
-
-            <StackPanel Grid.Column="0" Background="GhostWhite" Margin="5">
+            <TextBlock
+                        Background="White"
+                         Text="{Binding CurrentTaskText}"
+                         TextWrapping="Wrap"
+                DockPanel.Dock="Top"/>
+        </DockPanel>
+        <DockPanel Grid.Column="0" Background="LightPink" Margin="5">
+            <StackPanel Background="GhostWhite" DockPanel.Dock="Top">
                 <Label Content="     Name     |    Category     |  P  |  D"
                        Height="27"/>
-            <ListBox Name="ScheduleBox" Height="348"
+            </StackPanel>
+            <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"
+                    DockPanel.Dock="Bottom"/>
+            <ListBox Name="ScheduleBox" 
                          Width="200" Margin="5"
                          ItemsSource="{Binding Tasks}"
                          SelectedItem="{Binding CurrentTask, Mode=TwoWay}">
+                <!--Height="348"-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -76,8 +90,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Name="AddButton" Content="+Add" Height="35" Click="AddButton_Click"/>
-            </StackPanel>
+        </DockPanel>
 
     </Grid>
 </Window>
