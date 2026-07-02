@@ -56,7 +56,6 @@ namespace TimeManager.Core
                 {
                     TimeSpan blockTime = TimeSpan.Zero;
                     bool canAddMoreTasks = true;
-
                     while (queue.Count > 0 && canAddMoreTasks)
                     {
                         TaskItem nextTask = queue.Peek();
